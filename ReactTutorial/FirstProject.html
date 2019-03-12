@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+    <!-- some data about what the html is going to use, including character standards, http standards(and internet explorer standard)-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Where the script sourcing is coming from. Includes babel and the react development abilities-->
+
+    <script origin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script origin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script origin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    
+    <!-- title of the webpage-->    
+
+    <title>First Project</title>
+
+    <!-- denotes the end tag for head and beginning of body-->
+
+</head>
+<body>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            state = {
+                name: "Abby",
+                age:19,
+                currentName:"Abby"
+            }
+            handleSubmit=(e)=>{
+                console.log(e.target,e.pageX,e.pageY);
+
+                e.preventDefault()
+
+                console.log(this.state.currentName)
+
+                this.setState({
+                    name: this.state.currentName
+                    })
+            }
+            handleHover=(e)=>{
+                console.log(e.target,e.pageX,e.pageY,this.state);
+            }
+
+            handleChange=(e)=>{
+                e.preventDefault()
+                this.setState({
+                    currentName: e.target.value
+                })
+
+                console.log(this.currentName)
+            }
+
+            render() {
+
+                return(
+                    <div className="app-content">
+                        <h1>Header of the Document</h1>
+                        <p>My name is {this.state.name} and I am {this.state.age} years old</p>  
+                        <form onSubmit={this.handleSubmit}>
+                            Enter your name here: <input type="text" onChange={this.handleChange}/>
+                            <button>Submit</button>
+                        </form>
+                    </div>
+
+                )
+            }
+
+        }
+        ReactDOM.render(<App />, document.getElementById('app'))
+    </script>
+</body>
+</html>
