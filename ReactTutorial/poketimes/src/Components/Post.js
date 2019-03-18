@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux'
+import deletePost from '../Actions/postActions'
 
 // We're defining a component that will be a single post
 
 class Post extends Component{
-
+/* All this becomes obsolete using redux
 // We now define the post to have a state with its route parameter, which we are calling id, as its id. It starts off null then the id is set when we mount this component
 
 state={
@@ -41,18 +43,36 @@ componentDidMount(){
     })
     })
 }
+*/
+
+handleClick = ()=>{
+
+    this.props.deletePost(this.props.post.id);
+    this.props.history.push('/')
+
+}
 
 render(){
 
+    console.log(this.props)
+
     // We're going to set a post to either be the post we requested (nicely titled) or a loading message if we don't have the post yet
 
-    const post= this.state.post ? (
+    const post= this.props.post ? (
 
         <div className="post">
 
-            <h4 className="center">{this.state.post.title}</h4>
+            <h4 className="center">{this.props.post.title}</h4>
 
-            <p>{this.state.post.body}</p>
+            <p>{this.props.post.body}</p>
+
+            <div className="center">
+
+                <button className="btn grey" onClick={this.handleClick}>
+
+                    Delete Post
+                </button>
+            </div>
 
         </div>
 
@@ -77,5 +97,26 @@ render(){
     )
 }
 }
+// This time we are going to just modify the props to include the route parameter it already has
+const mapStateToProps = (state,ownProps)=>{
 
-export default Post
+    let id = ownProps.match.params.post_id
+
+    return{
+// This finds the element of the posts array that has the same id as our route parameter
+        post: state.posts.find(post => post.id === id)
+
+    }
+
+}
+
+const mapDispatchToProps = (dispatch) =>{
+
+return{
+
+    deletePost: (id)=>{dispatch(deletePost(id))}
+}
+
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Post)

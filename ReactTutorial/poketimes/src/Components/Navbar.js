@@ -11,7 +11,7 @@ const Navbar = () => {
 
     <nav className="nav-wrapper red darken-3">
 
-    {// We also automatically have some sick containers that keep the text all in one place nicely //}
+    {/* We also automatically have some sick containers that keep the text all in one place nicely */}
 
       <div className="container">
 

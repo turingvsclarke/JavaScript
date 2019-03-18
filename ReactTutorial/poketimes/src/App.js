@@ -43,8 +43,6 @@ class App extends Component {
       </BrowserRouter>
 
     )
-
-
   }
 
 }
