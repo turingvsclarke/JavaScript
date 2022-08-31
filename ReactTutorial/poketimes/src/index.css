@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* We are going to look at only an image within the home class, within the post class. We're going to place it off to the left, faded a little*/
+
+.home .post img{
+
+  position: absolute;
+
+  top: 20px;
+
+  left:-100px;
+
+  opacity: 0.6;
+
+}
+ 
+/* We are going to make sure each post hides any overflow image or text and that its got some padding on the left */
+
+.home .post{
+
+  overflow: hidden;
+
+  padding-left: 80px;
+
+}
