@@ -1,1 +1,2 @@
 This Javascript program uses a simple neural network to simulate how a self driving car might navigate traffic on a multi-lane highway. It highlights the car which has travelled the farthest on the road. The user may click "Save" and the next set of cars will be slightly mutated from the highlighted car. If the user clicks "Discard", the next set of cars will be randomly generated. Refreshing the page after saving or discarding prompts generation of the new set of cars.
+Click here to demo the program: https://turingvsclarke.github.io/JavaScript/SelfDrivingCar/
